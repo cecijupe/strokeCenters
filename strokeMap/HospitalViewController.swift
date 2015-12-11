@@ -30,6 +30,8 @@ class HospitalDetailViewController: UIViewController {
             if Hospital.key[idx] == loginName.text! {
                 self.login(true)
                 self.hospitalIdx = idx
+                print("logged in as", idx)
+                hospitalNameLabel.text = Hospital.name[idx]
             }
         }
         loginName.text = ""
@@ -43,7 +45,7 @@ class HospitalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestLabel.text = "N/A"
-        hospitalNameLabel.text = Hospital.name[hospitalIdx]
+
         if (logged == false){
             availabilityStackView.hidden = true
             hospitalNameLabel.hidden = true
@@ -66,6 +68,9 @@ class HospitalDetailViewController: UIViewController {
             }
             
         }
+            //Looks for single or multiple taps.
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+            view.addGestureRecognizer(tap)
     }
     @IBAction func acceptButtonPressed(sender: UIButton) {
         let response = [1, requestEmb]
@@ -106,6 +111,11 @@ class HospitalDetailViewController: UIViewController {
             self.loginStackView.hidden = false
             self.logoutButton.hidden = true
         }
+    }
+    // dismisses keyboard
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     // memory warning
     override func didReceiveMemoryWarning() {
