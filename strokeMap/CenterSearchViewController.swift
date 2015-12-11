@@ -32,14 +32,13 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
         request0.transportType = .Automobile
         request0.departureDate = NSDate()
         let directions = MKDirections(request: request0)
-        directions.calculateETAWithCompletionHandler{ response, error in
-            if error == nil {
-                if let res = response {
-                    let eta = Double(res.expectedTravelTime/60)
-                    return eta
-                } // res
-            } // callback
+        var travelTime: Double = 0
+        directions.calculateETAWithCompletionHandler{response, error in
+        guard let res = response else { return }
+            let eta = Double(res.expectedTravelTime/60)
+            travelTime = eta
         } // ETA
+        return travelTime
     } // end func
     //location 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -103,6 +102,9 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
             availCentersNames.append(Hospital.name[availCenters[index]])
         }
         // update available distances
+        
+        getDistances(currentCoord, end: Hospital.location[0])
+        
         for var index = 0; index < availCenters.count; ++index {
             availCentersDistances.append(Hospital.distance[availCenters[index]])
         }
