@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
 
@@ -15,6 +16,9 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
     
+    func getDistances(){
+        init(request: MKDirectionsRequest)
+    }
     
     // viewDidLoad
     override func viewDidLoad() {
