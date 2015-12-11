@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TNd-My-PZA" id="zaF-gW-nsI">
-                                    <rect key="frame" x="0.0" y="0.0" width="533" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hFv-4o-RRo">
@@ -166,6 +166,9 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Notify Hospital"/>
+                                <connections>
+                                    <action selector="notifyHospitalButtonPressed:" destination="eNA-gZ-lZM" eventType="touchUpInside" id="48o-pe-bbb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UW Harborview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmE-yw-EbH">
                                 <rect key="frame" x="219" y="74" width="162" height="28"/>
@@ -284,14 +287,14 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-6d-a41">
-                                        <rect key="frame" x="244" y="66" width="113" height="21"/>
+                                        <rect key="frame" x="244" y="56" width="113" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6fF-8l-1VW">
-                                        <rect key="frame" x="221" y="123" width="160" height="31"/>
+                                        <rect key="frame" x="221" y="103" width="160" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-3C-gWt">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="31"/>
@@ -300,7 +303,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idT-Bg-AyA">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="idT-Bg-AyA">
                                                 <rect key="frame" x="111" y="0.0" width="51" height="31"/>
                                                 <animations/>
                                                 <connections>
@@ -311,22 +314,49 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jp-Stm">
-                                        <rect key="frame" x="240" y="190" width="121" height="41"/>
+                                        <rect key="frame" x="235" y="160" width="130" height="71"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJQ-1G-AaP">
-                                                <rect key="frame" x="0.0" y="0.0" width="121" height="21"/>
+                                                <rect key="frame" x="5" y="0.0" width="121" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0v-Wa-QRN">
-                                                <rect key="frame" x="40" y="21" width="42" height="21"/>
+                                                <rect key="frame" x="44" y="21" width="42" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="1" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="f1H-vp-Ooe">
+                                                <rect key="frame" x="0.0" y="41" width="130" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9M2-pc-7Mk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <state key="normal" title="Accept">
+                                                            <color key="titleColor" red="0.15686274510000001" green="0.61176470589999998" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="acceptButtonPressed:" destination="DkZ-av-6ed" eventType="touchUpInside" id="k50-3n-qGe"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s57-ra-m9j">
+                                                        <rect key="frame" x="78" y="0.0" width="52" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="Decline">
+                                                            <color key="titleColor" red="1" green="0.12855624760000001" blue="0.12040763779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="declineButtonPressed:" destination="DkZ-av-6ed" eventType="touchUpInside" id="See-WJ-KVB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <animations/>
+                                            </stackView>
                                         </subviews>
                                         <animations/>
                                     </stackView>
@@ -387,6 +417,8 @@
                         <outlet property="loginName" destination="KVL-J0-Wpg" id="9aK-f8-wmZ"/>
                         <outlet property="loginStackView" destination="0kw-eV-aW9" id="xSb-l3-tSE"/>
                         <outlet property="logoutButton" destination="h9F-Qa-Qiv" id="OxN-U6-Sdp"/>
+                        <outlet property="reponseStackView" destination="f1H-vp-Ooe" id="U56-LZ-k76"/>
+                        <outlet property="requestLabel" destination="a0v-Wa-QRN" id="Enl-Qm-0AN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVb-ER-n7L" userLabel="First Responder" sceneMemberID="firstResponder"/>

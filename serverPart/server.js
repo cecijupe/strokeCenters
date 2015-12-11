@@ -57,7 +57,7 @@ io.sockets.on('connection', function(socket){
 	});
 	socket.on("responseForRequest", function(data){
 		console.log("response for request ", data)
-		var embSocket = data.socketID;
+		var embSocket = data[1];
 		if (io.sockets.connected[embSocket]){
 			console.log("emitting")
 			io.sockets.connected[embSocket].emit('hospitalResponse', data)
@@ -76,6 +76,11 @@ io.sockets.on('connection', function(socket){
 		}
 		console.log(hospital);
 	});
+	socket.on("notifyHospital", function(hospitalKey){
+		console.log(hospitalKey);
+		var data = [hospitalKey, String(socket.id)];
+		socket.broadcast.emit("notifySentToHospital", data);
+	})
 
 // 	console.log("socket connected", socket.id);
 // 	socket.on("startedChat", function(data){

@@ -25,6 +25,16 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
         socket.emit("embulanceLogged", "")
         socket.on("updateHospitalAv") { data, ack in
             print("update", data)
+            // updating the availability of hospitals
+            for idx in 0..<data[0].count {
+                if (Int((data[0][idx])! as! NSNumber) == 1){
+                Hospital.available[idx] = true
+                    print(data[0][idx])
+                } else {
+                    Hospital.available[idx] = false
+                }
+            }
+            self.tableView.reloadData()
         }
         socket.on("connect") { data, ack in
             print("socket from the center search view", data)
