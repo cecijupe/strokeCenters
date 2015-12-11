@@ -1,25 +1,29 @@
 //
-//  ViewController.swift
+//  CenterDetailViewController.swift
 //  strokeMap
 //
-//  Created by Jane Hall on 12/9/15.
+//  Created by Jane Hall on 12/10/15.
 //  Copyright © 2015 Jane Hall Consulting. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class CenterDetailViewController: UIViewController {
+    
+    // vars
+    var selectedCenterTime = "3 min"
+    var selectedCenterDistance = "0.1 mi"
+    var selectedCenterStatus = "Available"
+    
+    // did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    // memory warning
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
-
