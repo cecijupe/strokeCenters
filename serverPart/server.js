@@ -66,7 +66,7 @@ io.sockets.on('connection', function(socket){
 				hospital.strokeCenter[center].available = data[1];
 			}
 		}
-		console.log(hospital)
+		console.log(hospital);
 	})
 
 // 	console.log("socket connected", socket.id);
