@@ -417,8 +417,8 @@
                         <outlet property="loginName" destination="KVL-J0-Wpg" id="9aK-f8-wmZ"/>
                         <outlet property="loginStackView" destination="0kw-eV-aW9" id="xSb-l3-tSE"/>
                         <outlet property="logoutButton" destination="h9F-Qa-Qiv" id="OxN-U6-Sdp"/>
-                        <outlet property="reponseStackView" destination="f1H-vp-Ooe" id="U56-LZ-k76"/>
                         <outlet property="requestLabel" destination="a0v-Wa-QRN" id="Enl-Qm-0AN"/>
+                        <outlet property="responseStackView" destination="f1H-vp-Ooe" id="Dzg-3q-O3h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVb-ER-n7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
