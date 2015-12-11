@@ -10,11 +10,19 @@ import UIKit
 
 class CenterDetailViewController: UIViewController {
     
+    // instance vars
+    weak var goBackButtonDelegate: GoBackButtonDelegate?
+    
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    
+    // actions
+    @IBAction func goBackButtonPressed(sender: UIBarButtonItem) {
+        goBackButtonDelegate?.goBackButtonPressedFrom(self)
+    }
     
     // did load
     override func viewDidLoad() {

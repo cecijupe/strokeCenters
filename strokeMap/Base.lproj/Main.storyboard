@@ -190,7 +190,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KqG-Zs-3TZ">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Available Centers" id="qq3-vI-gcO"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Available Centers" id="qq3-vI-gcO">
+                            <connections>
+                                <action selector="goBackButtonPressed:" destination="eNA-gZ-lZM" id="Ajd-AQ-6kh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="distanceLabel" destination="h54-L0-5Nd" id="uzf-wE-pD8"/>

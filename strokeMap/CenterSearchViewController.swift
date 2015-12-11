@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CenterSearchViewController: UITableViewController {
+class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
 
     // vars
     var availCenters = [Int]()
@@ -56,13 +56,28 @@ class CenterSearchViewController: UITableViewController {
         return cell
     }
     
+    
     // segue
-    // if details button clicked, initiate editTask segue
+    // set goBackButtonDelegate on segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let navigationController = segue.destinationViewController as! UINavigationController
+        let controller = navigationController.topViewController as! CenterDetailViewController
+        controller.goBackButtonDelegate = self
+    }
+    
+    // if details button clicked, initiate detailsSegue
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
             // update selected
 
         Hospital.selected = indexPath.row
         performSegueWithIdentifier("DetailsSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
     }
+    
+    // go back (from details view)
+    // cancel button protocol
+    func goBackButtonPressedFrom(controller: UIViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }
 
