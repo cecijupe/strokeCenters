@@ -8,19 +8,23 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, SocketDelegate {
+
+class CenterSearchViewController: UITableViewController, CLLocationManagerDelegate, GoBackButtonDelegate, SocketDelegate {
 
     // vars
+
     let socket = SocketIOClient(socketURL: "https://stroke-map.herokuapp.com")
     var availCenters = [Int]()
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
-    
+    var locationManager: CLLocationManager!
+    var currentCoordinate = String()
     
     // get distances
-    let currentCoord = CLLocationCoordinate2DMake(47.6098383, -122.1986874)
-    
+    let currentCoord = CLLocationCoordinate2DMake()
+
     func getDistances(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Double {
         let request0 = MKDirectionsRequest()
         request0.source = MKMapItem(placemark: MKPlacemark(coordinate: start, // currentCoord
@@ -39,10 +43,29 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
             } // callback
         } // ETA
     } // end func
-    
+    //location 
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last! as CLLocation
+        let 2dlocation: CLLocationCoordinate2D = location.coordinate
+        let latitude = String(location.coordinate.latitude)
+        let longitude = String(location.coordinate.longitude)
+        currentCoordinate = latitude + "," + longitude
+        
+        
+    }
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        // location manager
+        if(CLLocationManager.locationServicesEnabled()){
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            
+        }
         // connecting socket 
         socket.connect()
         socket.emit("embulanceLogged", "")
