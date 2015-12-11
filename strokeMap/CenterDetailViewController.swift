@@ -14,7 +14,7 @@ class CenterDetailViewController: UIViewController {
     weak var goBackButtonDelegate: GoBackButtonDelegate?
     weak var socketDelegate: SocketDelegate?
     var request = false
-    let socket = SocketIOClient(socketURL: "http://localhost:7000")
+    let socket = SocketIOClient(socketURL: "https://stroke-map.herokuapp.com")
     var response = -1
     // outlets
     @IBOutlet weak var nameLabel: UILabel!

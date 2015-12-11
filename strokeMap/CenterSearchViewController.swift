@@ -11,7 +11,7 @@ import UIKit
 class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, SocketDelegate {
 
     // vars
-    let socket = SocketIOClient(socketURL: "http://localhost:7000")
+    let socket = SocketIOClient(socketURL: "https://stroke-map.herokuapp.com")
     var availCenters = [Int]()
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
