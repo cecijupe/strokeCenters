@@ -17,7 +17,8 @@ class CenterDetailViewController: UIViewController {
     
     // outlets
     @IBOutlet weak var timeLabel: UILabel!
-    
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     // did load
     override func viewDidLoad() {

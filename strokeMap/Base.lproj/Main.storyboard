@@ -182,8 +182,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="KqG-Zs-3TZ"/>
                     <connections>
-                        <outlet property="distanceLabel" destination="h54-L0-5Nd" id="ieY-5c-BB3"/>
-                        <outlet property="statusLabel" destination="jja-P6-WRH" id="7Pv-A4-zIQ"/>
+                        <outlet property="distanceLabel" destination="h54-L0-5Nd" id="uzf-wE-pD8"/>
+                        <outlet property="statusLabel" destination="jja-P6-WRH" id="o5E-oN-347"/>
                         <outlet property="timeLabel" destination="Sle-CC-XZr" id="eK4-R6-tpp"/>
                     </connections>
                 </viewController>
@@ -248,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVb-ER-n7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="886"/>
+            <point key="canvasLocation" x="461" y="1098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GYs-cj-AaU">
