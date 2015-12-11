@@ -14,7 +14,7 @@ class CenterDetailViewController: UIViewController {
     weak var goBackButtonDelegate: GoBackButtonDelegate?
     weak var socketDelegate: SocketDelegate?
     var request = false
-    let socket = SocketIOClient(socketURL: "http://localhost:7000")
+    let socket = SocketIOClient(socketURL: "https://stroke-map.herokuapp.com")
     var response = -1
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,37 +30,47 @@ class CenterDetailViewController: UIViewController {
     @IBAction func notifyHospitalButtonPressed(sender: UIButton) {
         print("notifying hospital")
         socket.emit("notifyHospital", Hospital.selected)
+        request = true
     }
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        // turns on the socket
-        socket.connect()
-        // fill in labels
-        nameLabel.text = Hospital.name[Hospital.selected]
-        timeLabel.text = "\(Hospital.timeTo[Hospital.selected]) min"
-        distanceLabel.text = "\(Hospital.distance[Hospital.selected]) mi"
-        
         // fill in status label
         func writeStatusMessage()->String {
             if Hospital.available[Hospital.selected] == false {            return "Not available"
             }
             else if Hospital.available[Hospital.selected] == true && request == false {
-                    return "Available"
-                }
+                return "Available"
+            }
             else if Hospital.available[Hospital.selected] == true && request == true && response == -1 {
-                    return "Not yet confirmed"
-                }
+                return "Not yet confirmed"
+            }
             else if Hospital.available[Hospital.selected] == true && request == true && response == 0 {
-                    return "Request denied"
-                }
+                return "Request denied"
+            }
             else if Hospital.available[Hospital.selected] == true && request == true && response == 1 {
-                    return "Request accepted"
-                }
+                return "Request accepted"
+            }
             else {
                 return ""
-                }
+            }
         }
+        // turns on the socket
+        socket.connect()
+        socket.on("hospitalResponse"){ data, ack in
+            print("hospital response")
+            print(data)
+            self.response = (Int((data[0]) as! NSNumber))
+            print(self.response)
+            self.statusLabel.text = writeStatusMessage()
+            
+        }
+        // fill in labels
+        nameLabel.text = Hospital.name[Hospital.selected]
+        timeLabel.text = "\(Hospital.timeTo[Hospital.selected]) min"
+        distanceLabel.text = "\(Hospital.distance[Hospital.selected]) mi"
+        
+
         statusLabel.text = writeStatusMessage()
     }
     

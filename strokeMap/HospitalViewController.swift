@@ -15,7 +15,7 @@ class HospitalDetailViewController: UIViewController {
     var hospitalIdx = 0
     @IBOutlet var responseStackView: UIStackView!
     @IBOutlet var logoutButton: UIButton!
-    let socket = SocketIOClient(socketURL: "http://localhost:7000")
+    let socket = SocketIOClient(socketURL: "https://stroke-map.herokuapp.com")
     @IBAction func logoutButtonPressed(sender: UIButton) {
         self.login(false)
     }
@@ -43,6 +43,7 @@ class HospitalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestLabel.text = "N/A"
+        hospitalNameLabel.text = Hospital.name[hospitalIdx]
         if (logged == false){
             availabilityStackView.hidden = true
             hospitalNameLabel.hidden = true

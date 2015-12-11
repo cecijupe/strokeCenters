@@ -32,5 +32,4 @@ class Hospital: NSObject {
     
     // status
     static var available = [true, true, true, false, false]
-    
 }
