@@ -13,6 +13,8 @@ class CenterDetailViewController: UIViewController {
     // instance vars
     weak var goBackButtonDelegate: GoBackButtonDelegate?
     weak var socketDelegate: SocketDelegate?
+    var request = false
+    var response = -1
     
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,10 +30,33 @@ class CenterDetailViewController: UIViewController {
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // fill in labels
         nameLabel.text = Hospital.name[Hospital.selected]
         timeLabel.text = "\(Hospital.timeTo[Hospital.selected]) min"
         distanceLabel.text = "\(Hospital.distance[Hospital.selected]) mi"
-        statusLabel.text = "\(Hospital.available[Hospital.selected])"
+        
+        // fill in status label
+        func writeStatusMessage()->String {
+            if Hospital.available[Hospital.selected] == false {            return "Not available"
+            }
+            else if Hospital.available[Hospital.selected] == true && request == false {
+                    return "Available"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == -1 {
+                    return "Not yet confirmed"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == 0 {
+                    return "Request denied"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == 1 {
+                    return "Request accepted"
+                }
+            else {
+                return ""
+                }
+        }
+        statusLabel.text = writeStatusMessage()
     }
     
     // memory warning
