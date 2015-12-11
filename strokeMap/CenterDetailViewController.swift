@@ -13,6 +13,7 @@ class CenterDetailViewController: UIViewController {
     // instance vars
     weak var goBackButtonDelegate: GoBackButtonDelegate?
     var request = false
+    var response = -1
     
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,13 +39,22 @@ class CenterDetailViewController: UIViewController {
         func writeStatusMessage()->String {
             if Hospital.available[Hospital.selected] == false {            return "Not available"
             }
-        else if Hospital.available[Hospital.selected] == true && request == false {
-                return "Available"
-            }
-        else if Hospital.available[Hospital.selected] == true && request == false {
-                return "Available"
-            }
-            
+            else if Hospital.available[Hospital.selected] == true && request == false {
+                    return "Available"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == -1 {
+                    return "Not yet confirmed"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == 0 {
+                    return "Request denied"
+                }
+            else if Hospital.available[Hospital.selected] == true && request == true && response == 1 {
+                    return "Request accepted"
+                }
+            else {
+                return ""
+                }
+        }
         statusLabel.text = writeStatusMessage()
     }
     
