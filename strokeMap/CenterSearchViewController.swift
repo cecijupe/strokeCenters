@@ -11,7 +11,7 @@ import UIKit
 class CenterSearchViewController: UITableViewController {
 
     // vars
-    var centers = Centers.name
+    var centers = Hospital.name
     var availCenters = ["Swedish", "Cherry Hill", "Harborview"]
     var distances = ["0.1 mi", "2.3 mi", "3.4 mi"]
     
@@ -47,7 +47,7 @@ class CenterSearchViewController: UITableViewController {
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
             // update selected
 
-        Centers.selected = indexPath.row
+        Hospital.selected = indexPath.row
         performSegueWithIdentifier("DetailsSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
     }
 }
