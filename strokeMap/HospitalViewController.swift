@@ -62,9 +62,9 @@ class HospitalDetailViewController: UIViewController {
             loginStackView.hidden = true
         }
         socket.connect()
-        socket.on("connect") { data, ack in
-            print("iOS::WE ARE USING SOCKETS!")
-        }
+//        socket.on("connect") { data, ack in
+//            print("iOS::WE ARE USING SOCKETS!")
+//        }
     }
     @IBAction func availableSwitchPressed(sender: UISwitch) {
         print("switch toggled", sender.on)
