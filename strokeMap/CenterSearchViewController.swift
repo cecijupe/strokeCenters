@@ -11,14 +11,28 @@ import UIKit
 class CenterSearchViewController: UITableViewController {
 
     // vars
-    var centers = Hospital.name
-    var availCenters = ["Swedish", "Cherry Hill", "Harborview"]
-    var distances = ["0.1 mi", "2.3 mi", "3.4 mi"]
+    var availCenters = [Int]()
+    var availCentersNames = [String]()
+    var availCentersDistances = [Double]()
+    
     
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // create array of available centers indices
+        for var index = 0; index < Hospital.name.count; ++index {
+            if Hospital.available[index] {
+                availCenters.append(index)
+            }
+        }
+        // update available names
+        for var index = 0; index < availCenters.count; ++index {
+            availCentersNames.append(Hospital.name[availCenters[index]])
+        }
+        // update available distances
+        for var index = 0; index < availCenters.count; ++index {
+            availCentersDistances.append(Hospital.distance[availCenters[index]])
+        }
     }
 
     // didReceiveMemoryWarning
@@ -37,8 +51,8 @@ class CenterSearchViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // dequeue the cell from our storyboard
         let cell = tableView.dequeueReusableCellWithIdentifier("AvailCentersCell")! as! AvailCentersCell
-        cell.CenterDistanceLabel.text = distances[indexPath.row]
-        cell.CenterNameLabel.text = availCenters[indexPath.row]
+        cell.CenterDistanceLabel.text = String(availCentersDistances[indexPath.row])
+        cell.CenterNameLabel.text = availCentersNames[indexPath.row]
         return cell
     }
     
