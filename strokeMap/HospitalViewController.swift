@@ -11,9 +11,14 @@ import UIKit
 class HospitalDetailViewController: UIViewController {
     let socket = SocketIOClient(socketURL: "http://localhost:7000")
     @IBAction func loginButtonPressed(sender: UIButton) {
+        
         print("button")
         logged = true
 //        tableView.reloadData()
+        for idx in 1...4{
+            print(Centers.key[idx])
+            
+        }
         availabilityStackView.hidden = false
         hospitalNameLabel.hidden = false
         currentRequestStackView.hidden = false
@@ -38,6 +43,7 @@ class HospitalDetailViewController: UIViewController {
         }
     }
     @IBAction func availableSwitchPressed(sender: UISwitch) {
+        socket.emit("availability")
         
     }
     @IBOutlet var currentRequestStackView: UIStackView!

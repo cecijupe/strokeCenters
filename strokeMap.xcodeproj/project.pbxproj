@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9347AB071C1A4D4400F78861 /* CenterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9347AB061C1A4D4400F78861 /* CenterDetailViewController.swift */; };
 		9347AB091C1A563100F78861 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9347AB081C1A563100F78861 /* Database.swift */; };
-		935A5EB01C1A77C600D8491E /* Centers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A5EAF1C1A77C600D8491E /* Centers.swift */; };
 		939E52461C192010005C9B71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939E52451C192010005C9B71 /* CoreLocation.framework */; };
 		939E52481C1A2619005C9B71 /* AvailCentersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939E52471C1A2619005C9B71 /* AvailCentersCell.swift */; };
 		93BABA941C19048100938DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BABA931C19048100938DCF /* AppDelegate.swift */; };
