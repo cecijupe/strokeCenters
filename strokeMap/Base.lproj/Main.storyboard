@@ -184,7 +184,7 @@
                     <connections>
                         <outlet property="distanceLabel" destination="h54-L0-5Nd" id="ieY-5c-BB3"/>
                         <outlet property="statusLabel" destination="jja-P6-WRH" id="7Pv-A4-zIQ"/>
-                        <outlet property="timeLabel" destination="Sle-CC-XZr" id="YCb-92-zTq"/>
+                        <outlet property="timeLabel" destination="Sle-CC-XZr" id="eK4-R6-tpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlX-RO-cCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
