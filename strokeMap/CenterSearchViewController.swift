@@ -11,7 +11,7 @@ import UIKit
 class CenterSearchViewController: UITableViewController {
 
     // vars
-    var centers = ["Swedish", "Cherry Hill", "Harborview", "NW", "UW"]
+    var centers = Centers.name
     var availCenters = ["Swedish", "Cherry Hill", "Harborview"]
     var distances = ["0.1 mi", "2.3 mi", "3.4 mi"]
     
@@ -40,6 +40,15 @@ class CenterSearchViewController: UITableViewController {
         cell.CenterDistanceLabel.text = distances[indexPath.row]
         cell.CenterNameLabel.text = availCenters[indexPath.row]
         return cell
+    }
+    
+    // segue
+    // if details button clicked, initiate editTask segue
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+            // update selected
+
+        Centers.selected = indexPath.row
+        performSegueWithIdentifier("DetailsSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
     }
 }
 

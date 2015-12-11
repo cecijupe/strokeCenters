@@ -57,7 +57,7 @@
                                 <connections>
                                     <outlet property="CenterDistanceLabel" destination="ohq-2J-ViH" id="ptI-qr-jbN"/>
                                     <outlet property="CenterNameLabel" destination="M6q-dD-lVZ" id="zmt-xC-cee"/>
-                                    <segue destination="1d2-OG-Zs2" kind="presentation" trigger="accessoryAction" id="DZX-Rt-Ahp"/>
+                                    <segue destination="lj1-5j-mYd" kind="presentation" identifier="DetailsSegue" trigger="accessoryAction" id="08Y-YW-Kku"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -167,12 +167,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Notify Hospital"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UW Harborview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmE-yw-EbH">
+                                <rect key="frame" x="219" y="74" width="162" height="28"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fE-SI-QuJ" firstAttribute="centerY" secondItem="6pv-nV-QzX" secondAttribute="centerY" id="1s0-8z-gce"/>
                             <constraint firstItem="wgx-ix-JeF" firstAttribute="height" secondItem="6pv-nV-QzX" secondAttribute="height" multiplier="0.2" id="6Ag-XC-PLU"/>
+                            <constraint firstItem="lmE-yw-EbH" firstAttribute="top" secondItem="Vmb-Lf-QPp" secondAttribute="bottom" constant="10" id="GgV-Yc-73R"/>
+                            <constraint firstItem="lmE-yw-EbH" firstAttribute="centerX" secondItem="6pv-nV-QzX" secondAttribute="centerX" id="PBf-Am-Wkg"/>
                             <constraint firstItem="eCl-kh-tW6" firstAttribute="top" secondItem="2fE-SI-QuJ" secondAttribute="bottom" constant="30" id="UAk-sZ-go7"/>
                             <constraint firstItem="wgx-ix-JeF" firstAttribute="centerX" secondItem="6pv-nV-QzX" secondAttribute="centerX" id="e8l-Y6-MNi"/>
                             <constraint firstItem="eCl-kh-tW6" firstAttribute="centerX" secondItem="6pv-nV-QzX" secondAttribute="centerX" id="oEv-5j-ueS"/>
@@ -180,16 +189,19 @@
                             <constraint firstItem="2fE-SI-QuJ" firstAttribute="centerX" secondItem="6pv-nV-QzX" secondAttribute="centerX" id="z7f-lj-4eC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KqG-Zs-3TZ"/>
+                    <navigationItem key="navigationItem" id="KqG-Zs-3TZ">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="qq3-vI-gcO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceLabel" destination="h54-L0-5Nd" id="uzf-wE-pD8"/>
+                        <outlet property="nameLabel" destination="lmE-yw-EbH" id="mme-B3-jlt"/>
                         <outlet property="statusLabel" destination="jja-P6-WRH" id="o5E-oN-347"/>
                         <outlet property="timeLabel" destination="Sle-CC-XZr" id="eK4-R6-tpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlX-RO-cCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3206" y="269"/>
+            <point key="canvasLocation" x="3263" y="269"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aOb-Kk-ot3">
@@ -303,23 +315,23 @@
             <point key="canvasLocation" x="411" y="1029"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="GYs-cj-AaU">
+        <scene sceneID="1aZ-oF-bKM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1d2-OG-Zs2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lj1-5j-mYd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QlN-Ht-bCp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HKa-5e-PTs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eNA-gZ-lZM" kind="relationship" relationship="rootViewController" id="JcS-RB-mCX"/>
+                        <segue destination="eNA-gZ-lZM" kind="relationship" relationship="rootViewController" id="UoR-D1-0Vq"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ELb-wB-9Px" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erq-GU-gOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2394" y="269"/>
+            <point key="canvasLocation" x="2451" y="269"/>
         </scene>
     </scenes>
 </document>
