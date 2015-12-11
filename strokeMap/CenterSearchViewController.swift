@@ -17,9 +17,28 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
     
-    func getDistances(){
-        init(request: MKDirectionsRequest)
-    }
+    
+    // get distances
+    let currentCoord = CLLocationCoordinate2DMake(47.6098383, -122.1986874)
+    
+    func getDistances(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Double {
+        let request0 = MKDirectionsRequest()
+        request0.source = MKMapItem(placemark: MKPlacemark(coordinate: start, // currentCoord
+            addressDictionary: nil))
+        request0.destination = MKMapItem(placemark: MKPlacemark(coordinate: end,  // Hospital.location[0]..[4]
+            addressDictionary: nil))
+        request0.transportType = .Automobile
+        request0.departureDate = NSDate()
+        let directions = MKDirections(request: request0)
+        directions.calculateETAWithCompletionHandler{ response, error in
+            if error == nil {
+                if let res = response {
+                    let eta = Double(res.expectedTravelTime/60)
+                    return eta
+                } // res
+            } // callback
+        } // ETA
+    } // end func
     
     // viewDidLoad
     override func viewDidLoad() {
