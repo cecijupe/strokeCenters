@@ -15,6 +15,11 @@ class CenterDetailViewController: UIViewController {
     var selectedCenterDistance = "0.1 mi"
     var selectedCenterStatus = "Available"
     
+    // outlets
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()

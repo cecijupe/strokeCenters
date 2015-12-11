@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TNd-My-PZA" id="zaF-gW-nsI">
-                                    <rect key="frame" x="0.0" y="0.0" width="533" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hFv-4o-RRo">
@@ -182,9 +182,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="KqG-Zs-3TZ"/>
                     <connections>
-                        <outlet property="distanceLabel" destination="h54-L0-5Nd" id="ieY-5c-BB3"/>
-                        <outlet property="statusLabel" destination="jja-P6-WRH" id="7Pv-A4-zIQ"/>
-                        <outlet property="timeLabel" destination="Sle-CC-XZr" id="YCb-92-zTq"/>
+                        <outlet property="distanceLabel" destination="h54-L0-5Nd" id="uzf-wE-pD8"/>
+                        <outlet property="statusLabel" destination="jja-P6-WRH" id="o5E-oN-347"/>
+                        <outlet property="timeLabel" destination="Sle-CC-XZr" id="eK4-R6-tpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlX-RO-cCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
