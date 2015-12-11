@@ -40,10 +40,16 @@ var updateAva = function(){
 		avaArr.push(hospital.strokeCenter[center].available)
 	}
 	return avaArr
-}
+};
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function(socket){
 	console.log("socket connected ", socket.id);
+	socket.on("embulanceLogged", function(data){
+		console.log("embulance logged in")
+		var updateInfo = updateAva();
+		console.log(updateInfo);
+		socket.emit("updateHospitalAv", updateInfo);
+	})
 	socket.on("requestSent", function(data){
 		data.socketID = socket.id;
 		console.log("request sent", data);
@@ -64,10 +70,12 @@ io.sockets.on('connection', function(socket){
 			if (hospital.strokeCenter[center].key == data[0]){
 				console.log("changing the availability of", hospital.strokeCenter[center].key);
 				hospital.strokeCenter[center].available = data[1];
+				var updateInfo = updateAva();
+				socket.broadcast.emit("updateHospitalAv", updateInfo);
 			}
 		}
 		console.log(hospital);
-	})
+	});
 
 // 	console.log("socket connected", socket.id);
 // 	socket.on("startedChat", function(data){

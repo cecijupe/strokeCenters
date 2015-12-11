@@ -12,6 +12,7 @@ class CenterDetailViewController: UIViewController {
     
     // instance vars
     weak var goBackButtonDelegate: GoBackButtonDelegate?
+    weak var socketDelegate: SocketDelegate?
     
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
