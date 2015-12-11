@@ -9,9 +9,10 @@
 import UIKit
 import MapKit
 
-class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
+class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, SocketDelegate {
 
     // vars
+    let socket = SocketIOClient(socketURL: "http://localhost:7000")
     var availCenters = [Int]()
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
@@ -23,6 +24,32 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        // connecting socket 
+        socket.connect()
+        socket.emit("embulanceLogged", "")
+        socket.on("updateHospitalAv") { data, ack in
+            print("update", data)
+            // updating the availability of hospitals
+            for idx in 0..<data[0].count {
+                if (Int((data[0][idx])! as! NSNumber) == 1){
+                Hospital.available[idx] = true
+                    print(data[0][idx])
+                } else {
+                    Hospital.available[idx] = false
+                }
+            }
+            self.tableView.reloadData()
+        }
+        socket.on("hospitalResponse"){ data, ack in
+            print(data)
+            
+        }
+        
+        socket.on("connect") { data, ack in
+            print("socket from the center search view", data)
+            self.socket.emit("embulanceLogged", "")
+        }
+        
         // create array of available centers indices
         for var index = 0; index < Hospital.name.count; ++index {
             if Hospital.available[index] {
@@ -81,6 +108,9 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate {
     // cancel button protocol
     func goBackButtonPressedFrom(controller: UIViewController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    func accessingSocketFrom (controller: UIViewController) {
+        // accessing socket from the other view
     }
 
 }

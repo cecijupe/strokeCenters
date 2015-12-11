@@ -40,10 +40,16 @@ var updateAva = function(){
 		avaArr.push(hospital.strokeCenter[center].available)
 	}
 	return avaArr
-}
+};
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function(socket){
 	console.log("socket connected ", socket.id);
+	socket.on("embulanceLogged", function(data){
+		console.log("embulance logged in")
+		var updateInfo = updateAva();
+		console.log(updateInfo);
+		socket.emit("updateHospitalAv", updateInfo);
+	})
 	socket.on("requestSent", function(data){
 		data.socketID = socket.id;
 		console.log("request sent", data);
@@ -51,11 +57,15 @@ io.sockets.on('connection', function(socket){
 	});
 	socket.on("responseForRequest", function(data){
 		console.log("response for request ", data)
-		var embSocket = data.socketID;
+		var embSocket = data[1];
+		console.log(embSocket)
 		if (io.sockets.connected[embSocket]){
 			console.log("emitting")
-			io.sockets.connected[embSocket].emit('hospitalResponse', data)
+			io.sockets.connected[embSocket].emit('hospitalResponse', data[0])
 		}
+	});
+	socket.on('disconnect', function(){
+		console.log("socket disconnected",socket.id);
 	});
 	socket.on("availability", function(data){
 		console.log("availability socket triggerred", data)
@@ -64,9 +74,16 @@ io.sockets.on('connection', function(socket){
 			if (hospital.strokeCenter[center].key == data[0]){
 				console.log("changing the availability of", hospital.strokeCenter[center].key);
 				hospital.strokeCenter[center].available = data[1];
+				var updateInfo = updateAva();
+				socket.broadcast.emit("updateHospitalAv", updateInfo);
 			}
 		}
 		console.log(hospital);
+	});
+	socket.on("notifyHospital", function(hospitalKey){
+		console.log(hospitalKey);
+		var data = [hospitalKey, String(socket.id)];
+		socket.broadcast.emit("notifySentToHospital", data);
 	})
 
 // 	console.log("socket connected", socket.id);

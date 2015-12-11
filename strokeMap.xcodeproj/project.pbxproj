@@ -40,6 +40,7 @@
 		A7D3E6BE1C1A91C100060CD6 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3E6AB1C1A91C100060CD6 /* SocketTypes.swift */; };
 		A7D3E6BF1C1A91C100060CD6 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3E6AC1C1A91C100060CD6 /* SwiftRegex.swift */; };
 		A7D3E6C01C1A91C100060CD6 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3E6AD1C1A91C100060CD6 /* WebSocket.swift */; };
+		A7D3E6C21C1AAD0500060CD6 /* SocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3E6C11C1AAD0500060CD6 /* SocketDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		A7D3E6AB1C1A91C100060CD6 /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = "Socket.IO-Client-Swift/Source/SocketTypes.swift"; sourceTree = SOURCE_ROOT; };
 		A7D3E6AC1C1A91C100060CD6 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = "Socket.IO-Client-Swift/Source/SwiftRegex.swift"; sourceTree = SOURCE_ROOT; };
 		A7D3E6AD1C1A91C100060CD6 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = "Socket.IO-Client-Swift/Source/WebSocket.swift"; sourceTree = SOURCE_ROOT; };
+		A7D3E6C11C1AAD0500060CD6 /* SocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				A7D3E6701C1A86C500060CD6 /* SocketIO */,
 				93BABA931C19048100938DCF /* AppDelegate.swift */,
 				93BABA951C19048100938DCF /* CenterSearchViewController.swift */,
+				A7D3E6C11C1AAD0500060CD6 /* SocketDelegate.swift */,
 				9347AB061C1A4D4400F78861 /* CenterDetailViewController.swift */,
 				A7D3E66E1C1A7ECD00060CD6 /* HospitalViewController.swift */,
 				933600A31C1A9DBB0066762B /* GoBackButtonDelegate.swift */,
@@ -351,6 +354,7 @@
 			files = (
 				A7D3E6B01C1A91C100060CD6 /* SocketAnyEvent.swift in Sources */,
 				A7D3E6B21C1A91C100060CD6 /* SocketEngineClient.swift in Sources */,
+				A7D3E6C21C1AAD0500060CD6 /* SocketDelegate.swift in Sources */,
 				A7D3E6B11C1A91C100060CD6 /* SocketEngine.swift in Sources */,
 				9347AB071C1A4D4400F78861 /* CenterDetailViewController.swift in Sources */,
 				A7D3E69A1C1A916000060CD6 /* Hospital.swift in Sources */,

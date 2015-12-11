@@ -12,9 +12,10 @@ class CenterDetailViewController: UIViewController {
     
     // instance vars
     weak var goBackButtonDelegate: GoBackButtonDelegate?
+    weak var socketDelegate: SocketDelegate?
     var request = false
+    let socket = SocketIOClient(socketURL: "http://localhost:7000")
     var response = -1
-    
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -26,10 +27,15 @@ class CenterDetailViewController: UIViewController {
         goBackButtonDelegate?.goBackButtonPressedFrom(self)
     }
     
+    @IBAction func notifyHospitalButtonPressed(sender: UIButton) {
+        print("notifying hospital")
+        socket.emit("notifyHospital", Hospital.selected)
+    }
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // turns on the socket
+        socket.connect()
         // fill in labels
         nameLabel.text = Hospital.name[Hospital.selected]
         timeLabel.text = "\(Hospital.timeTo[Hospital.selected]) min"
