@@ -43,6 +43,7 @@ class HospitalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestLabel.text = "N/A"
+        hospitalNameLabel.text = Hospital.name[hospitalIdx]
         if (logged == false){
             availabilityStackView.hidden = true
             hospitalNameLabel.hidden = true

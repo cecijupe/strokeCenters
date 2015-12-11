@@ -33,18 +33,23 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
                     Hospital.available[idx] = false
                 }
             }
+            self.updateArray()
+            print(self.availCenters)
             self.tableView.reloadData()
         }
-        socket.on("hospitalResponse"){ data, ack in
-            print(data)
-            
-        }
+
         
         socket.on("connect") { data, ack in
             print("socket from the center search view", data)
             self.socket.emit("embulanceLogged", "")
         }
-        
+        updateArray()
+
+    }
+    func updateArray() {
+        availCenters = []
+        availCentersNames = []
+        availCentersDistances = []
         // create array of available centers indices
         for var index = 0; index < Hospital.name.count; ++index {
             if Hospital.available[index] {
@@ -59,6 +64,7 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
         for var index = 0; index < availCenters.count; ++index {
             availCentersDistances.append(Hospital.distance[availCenters[index]])
         }
+                    print(self.availCenters)
     }
 
     // didReceiveMemoryWarning
