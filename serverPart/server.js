@@ -58,10 +58,14 @@ io.sockets.on('connection', function(socket){
 	socket.on("responseForRequest", function(data){
 		console.log("response for request ", data)
 		var embSocket = data[1];
+		console.log(embSocket)
 		if (io.sockets.connected[embSocket]){
 			console.log("emitting")
-			io.sockets.connected[embSocket].emit('hospitalResponse', data)
+			io.sockets.connected[embSocket].emit('hospitalResponse', data[0])
 		}
+	});
+	socket.on('disconnect', function(){
+		console.log("socket disconnected",socket.id);
 	});
 	socket.on("availability", function(data){
 		console.log("availability socket triggerred", data)

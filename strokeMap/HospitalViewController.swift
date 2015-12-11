@@ -73,7 +73,7 @@ class HospitalDetailViewController: UIViewController {
         requestLabel.text = "Accepted response"
     }
     @IBAction func declineButtonPressed(sender: UIButton) {
-        let response = [-1, requestEmb]
+        let response = [0, requestEmb]
         socket.emit("responseForRequest", response)
         responseStackView.hidden = true
         requestLabel.text = "Declined response"

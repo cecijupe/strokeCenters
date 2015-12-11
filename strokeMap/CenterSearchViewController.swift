@@ -16,7 +16,6 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
     
-    
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,11 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
             }
             self.tableView.reloadData()
         }
+        socket.on("hospitalResponse"){ data, ack in
+            print(data)
+            
+        }
+        
         socket.on("connect") { data, ack in
             print("socket from the center search view", data)
             self.socket.emit("embulanceLogged", "")
