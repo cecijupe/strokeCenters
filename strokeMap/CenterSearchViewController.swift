@@ -16,9 +16,6 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
     var availCenters = [Int]()
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
-    
-    
-    // get distances
     let currentCoord = CLLocationCoordinate2DMake(47.6098383, -122.1986874)
     
     func getDistances(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Double {
@@ -30,14 +27,13 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
         request0.transportType = .Automobile
         request0.departureDate = NSDate()
         let directions = MKDirections(request: request0)
-        directions.calculateETAWithCompletionHandler{ response, error in
-            if error == nil {
-                if let res = response {
-                    let eta = Double(res.expectedTravelTime/60)
-                    return eta
-                } // res
-            } // callback
+        var travelTime: Double = 0
+        directions.calculateETAWithCompletionHandler{response, error in
+        guard let res = response else { return }
+            let eta = Double(res.expectedTravelTime/60)
+            travelTime = eta
         } // ETA
+        return travelTime
     } // end func
     
     // viewDidLoad
@@ -85,6 +81,9 @@ class CenterSearchViewController: UITableViewController, GoBackButtonDelegate, S
             availCentersNames.append(Hospital.name[availCenters[index]])
         }
         // update available distances
+        
+        getDistances(currentCoord, end: Hospital.location[0])
+        
         for var index = 0; index < availCenters.count; ++index {
             availCentersDistances.append(Hospital.distance[availCenters[index]])
         }
