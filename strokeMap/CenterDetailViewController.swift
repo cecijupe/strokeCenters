@@ -31,30 +31,12 @@ class CenterDetailViewController: UIViewController {
         print("notifying hospital")
         socket.emit("notifyHospital", Hospital.selected)
         request = true
+        statusLabel.text = writeStatusMessage()
     }
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        // fill in status label
-        func writeStatusMessage()->String {
-            if Hospital.available[Hospital.selected] == false {            return "Not available"
-            }
-            else if Hospital.available[Hospital.selected] == true && request == false {
-                return "Available"
-            }
-            else if Hospital.available[Hospital.selected] == true && request == true && response == -1 {
-                return "Not yet confirmed"
-            }
-            else if Hospital.available[Hospital.selected] == true && request == true && response == 0 {
-                return "Request denied"
-            }
-            else if Hospital.available[Hospital.selected] == true && request == true && response == 1 {
-                return "Request accepted"
-            }
-            else {
-                return ""
-            }
-        }
+
         // turns on the socket
         socket.connect()
         socket.on("hospitalResponse"){ data, ack in
@@ -62,7 +44,7 @@ class CenterDetailViewController: UIViewController {
             print(data)
             self.response = (Int((data[0]) as! NSNumber))
             print(self.response)
-            self.statusLabel.text = writeStatusMessage()
+            self.statusLabel.text = self.writeStatusMessage()
             
         }
         // fill in labels
@@ -72,6 +54,26 @@ class CenterDetailViewController: UIViewController {
         
 
         statusLabel.text = writeStatusMessage()
+    }
+    // fill in status label
+    func writeStatusMessage()->String {
+        if Hospital.available[Hospital.selected] == false {            return "Not available"
+        }
+        else if Hospital.available[Hospital.selected] == true && request == false {
+            return "Available"
+        }
+        else if Hospital.available[Hospital.selected] == true && request == true && response == -1 {
+            return "Not yet confirmed"
+        }
+        else if Hospital.available[Hospital.selected] == true && request == true && response == 0 {
+            return "Request denied"
+        }
+        else if Hospital.available[Hospital.selected] == true && request == true && response == 1 {
+            return "Request accepted"
+        }
+        else {
+            return ""
+        }
     }
     
     // memory warning
