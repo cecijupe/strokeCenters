@@ -10,12 +10,8 @@ import UIKit
 
 class CenterDetailViewController: UIViewController {
     
-    // vars
-    var selectedCenterTime = "3 min"
-    var selectedCenterDistance = "0.1 mi"
-    var selectedCenterStatus = "Available"
-    
     // outlets
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -23,6 +19,10 @@ class CenterDetailViewController: UIViewController {
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameLabel.text = Centers.name[Centers.selected]
+        timeLabel.text = "\(Centers.timeTo[Centers.selected]) min"
+        distanceLabel.text = "\(Centers.distance[Centers.selected]) mi"
+        statusLabel.text = "\(Centers.available[Centers.selected])"
     }
     
     // memory warning
