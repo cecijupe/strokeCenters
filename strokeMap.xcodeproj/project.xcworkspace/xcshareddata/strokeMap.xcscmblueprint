@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C5A9E7056F56E3933C68A473178200061301ED6B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C5A9E7056F56E3933C68A473178200061301ED6B" : 0,
+    "01C4019DAB2F13C7FB458F088D0A991884C46F1A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1C7B629C-4313-4C14-8AAE-67DF759D14B4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C5A9E7056F56E3933C68A473178200061301ED6B" : "strokeCenters\/",
+    "01C4019DAB2F13C7FB458F088D0A991884C46F1A" : "..\/Socket.IO-Client-Swift"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "strokeMap",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "strokeMap.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nuclearace\/Socket.IO-Client-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01C4019DAB2F13C7FB458F088D0A991884C46F1A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cecijupe\/strokeCenters.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C5A9E7056F56E3933C68A473178200061301ED6B"
+    }
+  ]
+}
