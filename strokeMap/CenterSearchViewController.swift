@@ -20,11 +20,9 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
     var availCentersNames = [String]()
     var availCentersDistances = [Double]()
     var locationManager: CLLocationManager!
-    var currentCoordinate = String()
+    var currentCoord = CLLocationCoordinate2D()
     
     // get distances
-    let currentCoord = CLLocationCoordinate2DMake()
-
     func getDistances(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Double {
         let request0 = MKDirectionsRequest()
         request0.source = MKMapItem(placemark: MKPlacemark(coordinate: start, // currentCoord
@@ -47,10 +45,7 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations.last! as CLLocation
-        let 2dlocation: CLLocationCoordinate2D = location.coordinate
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
-        currentCoordinate = latitude + "," + longitude
+        currentCoord = location.coordinate
         
         
     }
