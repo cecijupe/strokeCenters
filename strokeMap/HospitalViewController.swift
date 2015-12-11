@@ -16,7 +16,7 @@ class HospitalDetailViewController: UIViewController {
         logged = true
 //        tableView.reloadData()
         for idx in 1...4{
-            print(Centers.key[idx])
+            print(Hospital.key[idx])
             
         }
         availabilityStackView.hidden = false

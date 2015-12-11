@@ -19,10 +19,10 @@ class CenterDetailViewController: UIViewController {
     // did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = Centers.name[Centers.selected]
-        timeLabel.text = "\(Centers.timeTo[Centers.selected]) min"
-        distanceLabel.text = "\(Centers.distance[Centers.selected]) mi"
-        statusLabel.text = "\(Centers.available[Centers.selected])"
+        nameLabel.text = Hospital.name[Hospital.selected]
+        timeLabel.text = "\(Hospital.timeTo[Hospital.selected]) min"
+        distanceLabel.text = "\(Hospital.distance[Hospital.selected]) mi"
+        statusLabel.text = "\(Hospital.available[Hospital.selected])"
     }
     
     // memory warning
