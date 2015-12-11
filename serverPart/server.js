@@ -10,29 +10,36 @@ app.use(express.static(path.join(__dirname,'client')));
 var server = app.listen(app.get('port'), function() {
 	console.log("stoke at port: 7000")
 });
-var hostpital = { 
+var hospital = { 
 	strokeCenter: [{
 			key: "UW",
 			name: "UW Medicine/Northwest",
-			available: "false"},
+			available: false},
 			{
 			key: "VMMC",
 			name: "Virginia Mason Medical Center",
-			available: "false"
+			available: false
 		}, {
 			key: "SMC",
 			name: "Swedish Medical Center",
-			available: "false"
+			available: false
 		}, {
 			key: "SMCCH",
 			name: "Swedish Medical Center/Cherry Hill",
-			available: "false"
+			available: false
 		}, {
 			key: "HMC",
 			name: "Harborview Medical Center",
-			available: "false"
+			available: false
 		}
 	]
+}
+var updateAva = function(){
+	var avaArr = [];
+	for (center in hospital.strokeCenter) {
+		avaArr.push(hospital.strokeCenter[center].available)
+	}
+	return avaArr
 }
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function(socket){
@@ -50,6 +57,17 @@ io.sockets.on('connection', function(socket){
 			io.sockets.connected[embSocket].emit('hospitalResponse', data)
 		}
 	});
+	socket.on("availability", function(data){
+		console.log("availability socket triggerred", data)
+		for (center in hospital.strokeCenter) {
+			console.log(hospital.strokeCenter[center].key);
+			if (hospital.strokeCenter[center].key == data[0]){
+				console.log("changing the availability of", hospital.strokeCenter[center].key);
+				hospital.strokeCenter[center].available = data[1];
+			}
+		}
+		console.log(hospital)
+	})
 
 // 	console.log("socket connected", socket.id);
 // 	socket.on("startedChat", function(data){
