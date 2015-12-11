@@ -10,6 +10,30 @@ app.use(express.static(path.join(__dirname,'client')));
 var server = app.listen(app.get('port'), function() {
 	console.log("stoke at port: 7000")
 });
+var hostpital = { 
+	strokeCenter: [{
+			key: "UW",
+			name: "UW Medicine/Northwest",
+			available: "false"},
+			{
+			key: "VMMC",
+			name: "Virginia Mason Medical Center",
+			available: "false"
+		}, {
+			key: "SMC",
+			name: "Swedish Medical Center",
+			available: "false"
+		}, {
+			key: "SMCCH",
+			name: "Swedish Medical Center/Cherry Hill",
+			available: "false"
+		}, {
+			key: "HMC",
+			name: "Harborview Medical Center",
+			available: "false"
+		}
+	]
+}
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function(socket){
 	console.log("socket connected ", socket.id);
@@ -17,7 +41,7 @@ io.sockets.on('connection', function(socket){
 		data.socketID = socket.id;
 		console.log("request sent", data);
 		socket.broadcast.emit('thereWasRequest', data);
-	})
+	});
 	socket.on("responseForRequest", function(data){
 		console.log("response for request ", data)
 		var embSocket = data.socketID;
@@ -25,7 +49,8 @@ io.sockets.on('connection', function(socket){
 			console.log("emitting")
 			io.sockets.connected[embSocket].emit('hospitalResponse', data)
 		}
-	})
+	});
+
 // 	console.log("socket connected", socket.id);
 // 	socket.on("startedChat", function(data){
 // 		console.log(data)
