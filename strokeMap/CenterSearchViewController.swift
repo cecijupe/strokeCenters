@@ -21,22 +21,33 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
     var availCentersDistances = [Double]()
     var locationManager: CLLocationManager!
     var currentCoord = CLLocationCoordinate2D()
+    var distance = Double()
+    var currentLat = Double()
+    var currentLong = Double()
     
     // get distances
-    func getDistances(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Double {
+    func getDistances( idx: Int) -> Double {
         let request0 = MKDirectionsRequest()
-        request0.source = MKMapItem(placemark: MKPlacemark(coordinate: start, // currentCoord
+        request0.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), // currentCoord
             addressDictionary: nil))
-        request0.destination = MKMapItem(placemark: MKPlacemark(coordinate: end,  // Hospital.location[0]..[4]
+        request0.destination = MKMapItem(placemark: MKPlacemark(coordinate: Hospital.location[idx],  // Hospital.location[0]..[4]
             addressDictionary: nil))
+        request0.requestsAlternateRoutes = true
         request0.transportType = .Automobile
-        request0.departureDate = NSDate()
+//        request0.departureDate = NSDate()
         let directions = MKDirections(request: request0)
+//        print(directions, "dirctions and request", request0)
         var travelTime: Double = 0
-        directions.calculateETAWithCompletionHandler{response, error in
-        guard let res = response else { return }
+        directions.calculateETAWithCompletionHandler{ response, error in
+        print(response,"response for the calculating ETA")
+        guard let res = response else { return print("no response")}
+            print(Double(res.distance)/5280)
             let eta = Double(res.expectedTravelTime/60)
+            print(eta)
+            Hospital.distance[idx] = Double(Int(res.distance/52.80)/100)
+            Hospital.timeTo[idx] = Int(eta)
             travelTime = eta
+            self.tableView.reloadData()
         } // ETA
         return travelTime
     } // end func
@@ -45,12 +56,17 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
     {
         let location = locations.last! as CLLocation
         currentCoord = location.coordinate
+        currentLat = location.coordinate.latitude
+        currentLong = location.coordinate.longitude
+        print(currentCoord, "current coordinate")
         
         
     }
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         // location manager
         if(CLLocationManager.locationServicesEnabled()){
             locationManager = CLLocationManager()
@@ -100,11 +116,12 @@ class CenterSearchViewController: UITableViewController, CLLocationManagerDelega
         // update available names
         for var index = 0; index < availCenters.count; ++index {
             availCentersNames.append(Hospital.name[availCenters[index]])
+            getDistances(index)
         }
         // update available distances
         
-        getDistances(currentCoord, end: Hospital.location[0])
         
+        print(self.distance, "??????????????????????????????)")
         for var index = 0; index < availCenters.count; ++index {
             availCentersDistances.append(Hospital.distance[availCenters[index]])
         }
